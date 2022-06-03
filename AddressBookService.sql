@@ -62,6 +62,8 @@ select city from AddressBook order by LastName;
 --UC9--Identify each Address book with name and type
  
  alter table Addressbook ADD Type varchar (10);
+ select * from AddressBook;
+
  
  update AddressBook SET Type ='Family' Where FirstName = 'manali';
 update AddressBook SET Type = 'Profession' Where FirstName='Ajinky';
@@ -71,7 +73,7 @@ update AddressBook SET Type = 'friends' Where FirstName='riya';
 select count(*),Type from AddressBook group by Type;
 
 --UC11
-alter table AddressBook Drop column type;
+alter table AddressBook Drop column Type;
 Create table AddressBookType( Typeid int primary key Identity(1,1),type varchar(10));
 Create table AddressBookMapping( MappingID int primary key Identity (1,1),
 AddressBookID int,
@@ -79,6 +81,9 @@ Typeid int,
 );
 alter table AddressBookMapping ADD Foreign key (AddressBookID) References AddressBook(Id);
 alter table AddressBookMapping ADD Foreign key (Typeid) References AddressBookType(Typeid);
+
+select * from AddressBookType;
+select * from AddressBookMapping;
 
 Insert into AddressBookType values('Friends'),('Family'),('Profession'),('others');
 
